@@ -47,6 +47,7 @@ def get_movie_data(s):
 
 # Getting Rotten Tomatoes Rating From OMDB API
 def get_movie_rating(d):
+    print(d)
     lst_rating=d['Ratings']
     #print(lst_rating)
     for rating in lst_rating:
@@ -54,7 +55,10 @@ def get_movie_rating(d):
             if rating[key]=='Rotten Tomatoes':
                 #print('yes')
                 rated=rating['Value']
-                return(int(rated[:2]))
+                if len(rated)==2:
+                    return(rated[:1])
+                else:
+                    return(int(rated[:2]))
             
     return 0
 
